@@ -1,0 +1,3 @@
+
+conky conf by ~jesse
+http://jessecfisher.github.io
