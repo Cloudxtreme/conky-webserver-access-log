@@ -32,12 +32,17 @@ own_window_argb_value 101
 
 TEXT
 ${font Zekton:size=9}Local Webserver Access Log   
-${font Monospace:size=10}${execpi 60 \
+${font Monospace:size=10}${execpi 10 \
  cat /srv/http/var/log/nginx/access.log |\
- cut -f1 -d ' '           |\
- sed -e s/127.0.0.1/me/     \
+ cut -f1 -d ' '          |\
+ sed -e s/127.0.0.1/local/ \
+ -e s/192.168.1.1/internet/ \
  -e s/50.22.90.226/pingdom/  \
- -e s/85.17.131.209/pingdom/ |\
- sort | uniq -c | sort -g -r  |\
+ -e s/85.17.131.209/pingdom/  \
+ -e s/157.56.93.72/bing\ bot/  \
+ -e s/157.55.35.102/bing\ bot/  \
+ -e s/66.249.75.71/google\ bot/  \
+ -e s/199.21.99.114/yandex\ bot/ |\
+ sort | uniq -c | sort -g -r     |\
  sed "/me\|pingdom/!s/\(.*\)/\${color0}\1\${color}/g"  }
 
